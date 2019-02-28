@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(34, 34, 34);
+}
+
+:root {
+    --color-green: #a7d129;
+}
+
+.button {
+    position: relative;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background: var(--color-green);
+    padding: 15px 60px;
+    overflow: hidden;
+}
+
+.button:hover::after {
+    animation: mask-play .5s steps(29) forwards;
+}
+
+.button::after {
+    width: 100%;
+    content: attr(data-text);
+    padding: 15px 0;
+    text-align: center;
+    background: rgb(34, 34, 34);
+    color: var(--color-green);
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 0 0 1px var(--color-green);
+    -moz-mask: url(urban-sprite.png);
+    mask: url(urban-sprite.png);
+    z-index: 100;
+    -moz-mask-size: 3500% 100%;
+    mask-size: 3500% 100%;
+    animation: mask-play-reverse .5s steps(29) forwards;
+}
+
+@keyframes mask-play {
+    from {
+        -moz-mask-position: 0% 0%;
+        mask-position: 0% 0%;
+    }
+    to {
+        -moz-mask-position: 100% 0%;
+        mask-position: 100% 0%;
+    }
+}
+
+@keyframes mask-play-reverse {
+    from {
+        mask-position: 100% 0%;
+    }
+    to {
+        mask-position: 0% 0%;
+    }
+}
